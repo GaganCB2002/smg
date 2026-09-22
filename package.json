@@ -1,0 +1,14 @@
+{
+  "name": "bsc-textiles-workspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix bsc-textiles run dev",
+    "build": "npm --prefix bsc-textiles run build",
+    "preview": "npm --prefix bsc-textiles run preview",
+    "server": "npm --prefix bsc-textiles run server",
+    "start": "npm --prefix bsc-textiles run start",
+    "lint": "npm --prefix bsc-textiles run lint",
+    "test": "npm --prefix bsc-textiles run test"
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b98f36"/>
+      <stop offset="35%" stop-color="#f0dfae"/>
+      <stop offset="65%" stop-color="#d9c08a"/>
+      <stop offset="100%" stop-color="#a97f2b"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1424"/>
+      <stop offset="100%" stop-color="#05070e"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="18" fill="url(#bg)"/>
+  <rect x="3" y="3" width="122" height="122" rx="15" fill="none" stroke="url(#gold)" stroke-opacity="0.35"/>
+  <text x="64" y="66" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46"
+        letter-spacing="2" fill="url(#gold)">BSC</text>
+  <line x1="34" y1="88" x2="94" y2="88" stroke="url(#gold)" stroke-width="2" stroke-linecap="round"/>
+</svg>

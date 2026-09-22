@@ -1,0 +1,44 @@
+{
+  "name": "bsc-textiles-shivamogga",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "start": "node server/index.js",
+    "lint": "oxlint",
+    "images": "node scripts/prepare-images.mjs",
+    "test": "node scripts/functional.mjs",
+    "test:visual": "node scripts/smoke.mjs",
+    "test:fallback": "node scripts/fallback.mjs",
+    "film": "python3 scripts/render-film.py && python3 scripts/render-film.py --width 720 --height 1280 --out public/media/bsc-invitation-film-vertical.mp4 --poster public/media/bsc-invitation-film-vertical-poster.jpg",
+    "film:vertical": "python3 scripts/render-film.py --width 720 --height 1280 --out public/media/bsc-invitation-film-vertical.mp4 --poster public/media/bsc-invitation-film-vertical-poster.jpg",
+    "loop": "python3 scripts/render-heroloop.py"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.7.0",
+    "express": "^5.2.1",
+    "gsap": "^3.15.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "autoprefixer": "^10.6.1",
+    "oxlint": "^1.81.0",
+    "playwright": "^1.63.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
+    "vite": "^8.3.0"
+  },
+  "description": "Grand Opening 3D invitation experience for BSC Textiles, Shivamogga",
+  "engines": {
+    "node": ">=18.18"
+  }
+}

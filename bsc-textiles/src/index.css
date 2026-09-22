@@ -1,0 +1,406 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   BSC TEXTILES — design tokens
+   Deep navy / charcoal · ivory · champagne gold · warm beige
+   ========================================================================== */
+:root {
+  --ink: #080c16;
+  --ink-800: #0a0f1c;
+  --ink-700: #101827;
+  --ivory: #f4efe6;
+  --champagne: #d9c08a;
+  --champagne-light: #e7ce9c;
+  --gold: #c9a227;
+  --beige: #d8c7a9;
+
+  --bg-a: #0a1120;
+  --bg-b: #080c16;
+  --bg-c: #05070e;
+
+  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-drape: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --nav-h: 74px;
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* `clip` (not `hidden`) — hidden would turn the root into a scroll
+       container and break every `position: sticky` section. */
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: clip;
+    max-width: 100vw;
+    background-color: var(--bg-b);
+    color: var(--ivory);
+    font-family: 'Jost', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* The living backdrop: a slow-breathing wash of navy → charcoal → champagne. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: -10vh -10vw;
+    z-index: -3;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 18% 12%, rgba(217, 192, 138, calc(0.075 * var(--glow, 1))) 0%, transparent 60%),
+      radial-gradient(70% 60% at 82% 78%, rgba(201, 162, 39, calc(0.065 * var(--glow, 1))) 0%, transparent 62%),
+      linear-gradient(170deg, var(--bg-a) 0%, var(--bg-b) 48%, var(--bg-c) 100%);
+    transition: opacity 0.8s var(--ease-silk);
+  }
+
+  /* Fine woven texture — the textile house signature. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: soft-light;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(244, 239, 230, 0.035) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(244, 239, 230, 0.028) 0 1px, transparent 1px 3px);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  ::selection {
+    background: rgba(217, 192, 138, 0.28);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--champagne);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Elegant scrollbar (WebKit) */
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-track { background: #05070e; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(217, 192, 138, 0.55), rgba(201, 162, 39, 0.35));
+    border-radius: 99px;
+  }
+
+  input, textarea, select, button { font: inherit; color: inherit; }
+
+  img { max-width: 100%; display: block; }
+
+  /* Hide the native cursor only where the custom one is active (desktop). */
+  html.has-custom-cursor,
+  html.has-custom-cursor * { cursor: none !important; }
+}
+
+/* ==========================================================================
+   Components & utilities
+   ========================================================================== */
+@layer components {
+  .shell {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 1320px;
+    padding-inline: clamp(1.15rem, 5vw, 4.5rem);
+  }
+
+  .eyebrow {
+    font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    font-weight: 400;
+  }
+
+  .gold-text {
+    background: linear-gradient(105deg, #b98f36 0%, #f0dfae 26%, #d9c08a 48%, #a97f2b 74%, #f2e4bd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass {
+    background: linear-gradient(150deg, rgba(244, 239, 230, 0.075), rgba(244, 239, 230, 0.022));
+    border: 1px solid rgba(217, 192, 138, 0.22);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    box-shadow:
+      0 30px 70px -40px rgba(0, 0, 0, 0.9),
+      inset 0 1px 0 rgba(244, 239, 230, 0.14);
+  }
+
+  .glass-dark {
+    background: linear-gradient(150deg, rgba(10, 15, 28, 0.72), rgba(5, 7, 14, 0.55));
+    border: 1px solid rgba(217, 192, 138, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(217, 192, 138, 0.55), transparent);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 1rem 2.2rem;
+    min-height: 48px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ivory);
+    border: 1px solid rgba(217, 192, 138, 0.45);
+    background: transparent;
+    transition: color 0.5s var(--ease-silk), border-color 0.5s var(--ease-silk),
+      transform 0.35s var(--ease-silk), box-shadow 0.5s var(--ease-silk);
+    will-change: transform;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(100deg, #b98f36, #e7ce9c 45%, #c9a227);
+    transform: translateY(101%);
+    transition: transform 0.62s var(--ease-silk);
+  }
+
+  .btn:hover::before,
+  .btn:focus-visible::before { transform: translateY(0); }
+  .btn:hover, .btn:focus-visible {
+    color: #100c04;
+    border-color: transparent;
+    box-shadow: 0 18px 46px -22px rgba(217, 192, 138, 0.75);
+  }
+  .btn:active { transform: scale(0.97); }
+
+  .btn-gold {
+    border-color: transparent;
+    color: #120d03;
+    background: linear-gradient(100deg, #b98f36, #f0dfae 42%, #c9a227);
+  }
+  .btn-gold::before { background: linear-gradient(100deg, #f6e9c4, #fff9ec 50%, #e7ce9c); }
+
+  .btn-ghost { font-size: 0.62rem; padding: 0.8rem 1.7rem; }
+
+  .btn[disabled] { opacity: 0.45; pointer-events: none; }
+
+  /* ---------- Form fields ---------- */
+  .field {
+    position: relative;
+    display: block;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 1.05rem 1.1rem 0.95rem;
+    border-radius: 12px;
+    background: rgba(5, 7, 14, 0.55);
+    border: 1px solid rgba(217, 192, 138, 0.2);
+    color: var(--ivory);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: border-color 0.4s var(--ease-silk), box-shadow 0.4s var(--ease-silk),
+      background 0.4s var(--ease-silk);
+  }
+  .field input::placeholder { color: rgba(244, 239, 230, 0.32); }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: rgba(217, 192, 138, 0.75);
+    background: rgba(5, 7, 14, 0.78);
+    box-shadow: 0 0 0 4px rgba(217, 192, 138, 0.09);
+  }
+  .field input[aria-invalid='true'],
+  .field select[aria-invalid='true'] {
+    border-color: rgba(226, 122, 122, 0.85);
+    box-shadow: 0 0 0 4px rgba(226, 122, 122, 0.08);
+  }
+  .field label {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(217, 192, 138, 0.85);
+    margin-bottom: 0.6rem;
+  }
+  .field-error {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.45rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #f0a8a8;
+  }
+
+  /* ---------- 3D stage helpers ---------- */
+  .stage { perspective: 1400px; perspective-origin: 50% 45%; }
+  .stage-soft { perspective: 900px; }
+  .preserve-3d { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; }
+
+  .frame-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 4px;
+    background: linear-gradient(150deg, rgba(244, 239, 230, 0.08), rgba(244, 239, 230, 0.015));
+    box-shadow:
+      0 60px 90px -60px rgba(0, 0, 0, 0.95),
+      0 0 0 1px rgba(217, 192, 138, 0.16),
+      inset 0 1px 0 rgba(244, 239, 230, 0.1);
+  }
+  /* Light sweeping across the "glass" of a frame. */
+  .frame-3d::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(255, 250, 235, 0.16) 46%,
+      rgba(255, 250, 235, 0.02) 58%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.6s var(--ease-silk);
+  }
+  .frame-3d:hover::after { opacity: 1; }
+
+  /* Woven placeholder used when a photograph has not been supplied yet. */
+  .woven-placeholder {
+    background:
+      repeating-linear-gradient(45deg, rgba(217, 192, 138, 0.09) 0 2px, transparent 2px 7px),
+      repeating-linear-gradient(-45deg, rgba(244, 239, 230, 0.06) 0 2px, transparent 2px 9px),
+      linear-gradient(160deg, #131c31, #0a0f1c 60%, #0d1424);
+  }
+
+  /* Cinematic vignette: sits above the WebGL layer, below all content. */
+  .vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(125% 85% at 50% 45%, transparent 46%, rgba(5, 7, 14, 0.32) 80%, rgba(4, 6, 12, 0.62) 100%),
+      linear-gradient(180deg, rgba(5, 7, 14, 0.5) 0%, transparent 14%, transparent 84%, rgba(5, 7, 14, 0.55) 100%);
+  }
+
+  @media (max-width: 767px) {
+    .vignette {
+      background:
+        radial-gradient(140% 70% at 50% 45%, transparent 55%, rgba(5, 7, 14, 0.24) 86%, rgba(4, 6, 12, 0.5) 100%),
+        linear-gradient(180deg, rgba(5, 7, 14, 0.45) 0%, transparent 18%, transparent 86%, rgba(5, 7, 14, 0.5) 100%);
+    }
+  }
+
+  .curtain-silk {
+    background:
+      linear-gradient(100deg, rgba(8, 12, 22, 0) 0%, rgba(217, 192, 138, 0.16) 50%, rgba(8, 12, 22, 0) 100%),
+      repeating-linear-gradient(90deg, rgba(244, 239, 230, 0.045) 0 1px, transparent 1px 4px);
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+  .no-overflow { overflow-x: clip; }
+  .gold-rule {
+    background: linear-gradient(90deg, transparent, rgba(217, 192, 138, 0.7), transparent);
+  }
+  .drop-luxe { filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55)); }
+  .gpu { transform: translateZ(0); will-change: transform; backface-visibility: hidden; }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+  }
+}
+
+/* ==========================================================================
+   Reveal system — GSAP drives the animation; CSS only sets the start state.
+   If JS/GSAP never runs, `data-anim` stays "off" and everything is visible.
+   ========================================================================== */
+html[data-anim='on'] [data-reveal] { opacity: 0; }
+html[data-anim='on'] [data-reveal='up'] { transform: translate3d(0, 42px, 0); }
+html[data-anim='on'] [data-reveal='depth'] {
+  transform: translate3d(0, 60px, -180px) rotateX(12deg);
+  transform-origin: 50% 100%;
+}
+html[data-anim='on'] [data-reveal='scale'] { transform: scale(0.9); }
+html[data-anim='on'] [data-reveal='blur'] { filter: blur(12px); }
+html[data-anim='on'] [data-reveal='left'] { transform: translate3d(-48px, 0, 0); }
+html[data-anim='on'] [data-reveal='right'] { transform: translate3d(48px, 0, 0); }
+
+/* ==========================================================================
+   Reduced motion — honour the OS preference everywhere.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html[data-anim='on'] [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ==========================================================================
+   Small shared keyframes (kept plain so they work without Tailwind classes)
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.toast-pop { animation: toastIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes riseFade {
+  0% { opacity: 0; transform: translateY(24px); }
+  18% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-160px); }
+}

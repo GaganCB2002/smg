@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#080C16" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>BSC Textiles — Shivamogga | Grand Opening Invitation</title>
+    <meta
+      name="description"
+      content="You are cordially invited to the Grand Opening of BSC Textiles, Shivamogga. A new chapter of elegance begins."
+    />
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BSC Textiles — Shivamogga | Grand Opening" />
+    <meta
+      property="og:description"
+      content="A new chapter of elegance begins in Shivamogga. You are cordially invited."
+    />
+    <meta property="og:image" content="/images/og-cover.jpg" />
+    <meta property="og:site_name" content="BSC Textiles" />
+    <meta property="og:video" content="/media/bsc-invitation-film.mp4" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1280" />
+    <meta property="og:video:height" content="720" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BSC Textiles — Shivamogga | Grand Opening" />
+    <meta name="twitter:description" content="A new chapter of elegance begins in Shivamogga." />
+    <meta name="twitter:image" content="/images/og-cover.jpg" />
+
+    <!-- Premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Pre-hydration paint: keeps the first frame luxurious (no white flash) */
+      html { background: #080c16; }
+      #boot {
+        position: fixed; inset: 0; display: grid; place-items: center;
+        background: radial-gradient(120% 120% at 50% 30%, #131c31 0%, #080c16 60%, #05070e 100%);
+        color: #d9c08a; font-family: 'Cormorant Garamond', Georgia, serif;
+        letter-spacing: 0.5em; font-size: 12px; text-transform: uppercase;
+        z-index: 9999; transition: opacity .6s ease;
+      }
+      #boot.done { opacity: 0; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="boot"><span>BSC&nbsp;&nbsp;TEXTILES</span></div>
+    <div id="root"></div>
+    <noscript>
+      <div style="color:#f4efe6;font-family:Georgia,serif;padding:12vh 8vw;background:#080c16;min-height:100vh">
+        <h1 style="font-size:8vw;letter-spacing:.06em;margin:0">BSC TEXTILES</h1>
+        <p style="letter-spacing:.4em;font-size:12px;color:#d9c08a;margin-top:1rem">GRAND OPENING • SHIVAMOGGA</p>
+        <p style="max-width:46ch;line-height:1.8;margin-top:2rem">
+          You are cordially invited to the Grand Opening of BSC Textiles, Shivamogga.
+          Please enable JavaScript to open the full 3D invitation experience.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
