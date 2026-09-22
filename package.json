@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "postinstall": "npm --prefix bsc-textiles install",
     "dev": "npm --prefix bsc-textiles run dev",
     "build": "npm --prefix bsc-textiles run build",
     "preview": "npm --prefix bsc-textiles run preview",
